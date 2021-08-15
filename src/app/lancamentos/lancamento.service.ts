@@ -34,12 +34,12 @@ export class LancamentoService {
 
     if (filtro.dataVencimentoInicio) {
       params = params.set('dataVencimentoDe',
-        moment(filtro.dataVencimentoInicio).format('YYYY-MM-DD'));
+        moment(filtro.dataVencimentoInicio).format('DD-MM-YYYY'));
     }
 
     if (filtro.dataVencimentoFim) {
       params = params.set('dataVencimentoAte',
-        moment(filtro.dataVencimentoFim).format('YYYY-MM-DD'));
+        moment(filtro.dataVencimentoFim).format('DD-MM-YYYY'));
     }
 
     return this.http.get(`${this.lancamentosUrl}?resumo`, { params })
