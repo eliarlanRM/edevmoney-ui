@@ -29,8 +29,8 @@ export function tokenGetter(): string {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        allowedDomains: ['https://edevmoney-api.herokuapp.com'],
-        disallowedRoutes: ['https://edevmoney-api.herokuapp.com/oauth/token']
+        allowedDomains: ['localhost:8080'],
+        disallowedRoutes: ['http://localhost:8080/oauth/token']
       }
     }),
 
