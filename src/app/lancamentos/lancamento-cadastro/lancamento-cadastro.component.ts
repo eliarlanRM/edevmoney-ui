@@ -1,5 +1,5 @@
 import { Title } from '@angular/platform-browser';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -54,20 +54,30 @@ export class LancamentoCadastroComponent implements OnInit {
     this.carregarPessoas();
   }
 
+  validarRequired(input: FormControl) {
+    return (input.value ? null : {obrigatorio: true});
+  }
+
+  validarMinLength(valor: number) {
+    return (input: FormControl) => {
+      return (!input.value || input.value.length >= valor) ? null : {tamanhoMinimo: { tamanho: valor} };
+    }
+  }
+
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
       codigo: [],
-      tipo: [ 'RECEITA', Validators.required ],
-      dataVencimento: [ null, Validators.required ],
+      tipo: [ 'RECEITA', this.validarRequired ],
+      dataVencimento: [ null, this.validarRequired ],
       dataPagamento: [],
-      descricao: [null, [ Validators.required, Validators.minLength(5) ]],
+      descricao: [null, [ this.validarRequired, this.validarMinLength(5) ]],
       valor: [ null, Validators.required ],
       pessoa: this.formBuilder.group({
-        codigo: [ null, Validators.required ],
+        codigo: [ null, this.validarRequired ],
         nome: []
       }),
       categoria: this.formBuilder.group({
-        codigo: [ null, Validators.required ],
+        codigo: [ null, this.validarRequired ],
         nome: []
       }),
       observacao: []
