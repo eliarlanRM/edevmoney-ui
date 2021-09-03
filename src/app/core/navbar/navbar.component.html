@@ -10,6 +10,8 @@
     <li class="navbar-usuario">{{ auth.jwtPayload?.nome}}</li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a routerLink="/dashboard">Dashboard</a></li>
+      <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a routerLink="/relatorios/lancamentos">Relatorios</a></li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a routerLink="/lancamentos">Lançamentos</a></li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
