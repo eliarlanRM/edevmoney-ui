@@ -88,6 +88,10 @@ export class LancamentoCadastroComponent implements OnInit {
     return Boolean(this.formulario.get('codigo').value);
   }
 
+  get urlUploadAnexo(){
+    return this.lancamentoService.urlUploadAnexo();
+  }
+
   carregarLancamento(codigo: number) {
     this.lancamentoService.buscarPorCodigo(codigo)
       .then(lancamento => {

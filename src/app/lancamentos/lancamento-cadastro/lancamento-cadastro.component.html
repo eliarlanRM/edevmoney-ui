@@ -57,11 +57,17 @@
         <textarea pInputTextarea rows="3" name="observacao"
         formControlName="observacao"></textarea>
       </div>
-      <div class="col-12">
+      <div class="lg:col-12 md:col-6 sm:col-3 p-fluid">
+        <p-fileUpload name="anexo" mode="basic" auto="true" maxFileSize="10000000"
+        chooseLabel="Anexar" accept="image/*, application/pdf" [url]="urlUploadAnexo"></p-fileUpload>
+      </div>
+      <div class=" col-12 sm:col-10">
         <button pButton type="submit" label="Salvar" class="p-button-primary padding" [disabled]="formulario.invalid"></button>
         <button pButton type="button" label="Novo" class="p-button-info"
           (click)="novo()"></button>
-        <a routerLink="/lancamentos" class="p-fluid">Voltar para a pesquisa</a>
+      </div>
+      <div class="col-12 sm:col-2">
+        <a routerLink="/lancamentos" class="p-fluid right-0">Voltar para a pesquisa</a>
       </div>
     </div>
   </form>
