@@ -7,11 +7,13 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
+import { PanelModule } from 'primeng/panel';
 
 import { SharedModule } from './../shared/shared.module';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { PessoasRoutingModule } from './pessoas-routing.module';
+
 
 @NgModule({
   imports: [
@@ -23,6 +25,7 @@ import { PessoasRoutingModule } from './pessoas-routing.module';
     TableModule,
     TooltipModule,
     InputMaskModule,
+    PanelModule,
 
     SharedModule,
     PessoasRoutingModule
