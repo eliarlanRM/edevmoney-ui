@@ -69,7 +69,7 @@
        <app-message [control]="estado.control" error="required" text="Informe um Estado"></app-message>
       </div>
       <div class="col-12 padding-top">
-        <button pButton label="{{ editando? 'Editar Contato' : 'Novo Contato ' }}" icon="pi pi-plus" type="button"
+        <button pButton label="Novo Contato" icon="pi pi-plus" type="button"
           class="p-button-secondary" (click)="prepararNovoContato()"></button>
       </div>
       <div class="col-12 padding-top">
@@ -124,15 +124,15 @@
       <div class="col-12">
         <button pButton type="submit" label="Salvar" [disabled]="!pessoaForm.valid" class="padding"></button>
         <button pButton type="button" label="Novo" (click)="novo(pessoaForm)" class="p-button-info padding"></button>
-        <a routerLink="/pessoas" class="p-fluid">Voltar para a pesquisa</a>
+        <a routerLink="/pessoas" class="p-fluid right">Voltar para a pesquisa</a>
       </div>
     </div>
   </form>
 </div>
 
-<p-dialog header="{{ editando? 'Editar Contato' : 'Novo Contato ' }}" [(visible)]="exibindoFormularioContato"
+<p-dialog header="Novo Contato" [(visible)]="exibindoFormularioContato"
   modal="modal" *ngIf="contato" [breakpoints]="{'960px': '75vw', '640px': '100vw'}">
-  <form #frmContato="ngForm">
+  <form #frmContato="ngForm" (ngSubmit)="confirmarContato(frmContato)">
     <div class="card">
       <div class="field">
         <label>Nome</label>
