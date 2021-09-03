@@ -130,6 +130,34 @@
   </form>
 </div>
 
-<p-dialog header="{{ editando? 'Editar Contato' : 'Novo Contato ' }}" [(visible)]="exibindoFormularioContato" modal="modal">
+<p-dialog header="{{ editando? 'Editar Contato' : 'Novo Contato ' }}" [(visible)]="exibindoFormularioContato"
+  modal="modal" *ngIf="contato" [breakpoints]="{'960px': '75vw', '640px': '100vw'}">
+  <form #frmContato="ngForm">
+    <div class="card">
+      <div class="field">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome"
+        required [(ngModel)]="contato.nome" #contatoNome="ngModel" class="inputfield w-full"/>
 
+        <app-message [control]="contatoNome" error="required" text="Informe o nome"></app-message>
+      </div>
+      <div class="field">
+        <label>E-mail</label>
+        <input pInputText type="email" name="email"
+        required email [(ngModel)]="contato.email" #contatoEmail="ngModel" class="inputfield w-full"/>
+
+        <app-message [control]="contatoEmail" error="required" text="Informe um email"></app-message>
+        <app-message [control]="contatoEmail" error="email" text="Informe um email válido"></app-message>
+      </div>
+      <div class="field">
+        <label>Telefone</label><br>
+        <p-inputMask name="telefone" [(ngModel)]="contato.telefone"
+          mask="(99) 99999-9999" styleClass="inputfield w-full"></p-inputMask>
+      </div>
+      <div class="field">
+        <button pButton type="submit" label="Confirmar"
+         [disabled]="frmContato.invalid"></button>
+      </div>
+    </div>
+  </form>
 </p-dialog>

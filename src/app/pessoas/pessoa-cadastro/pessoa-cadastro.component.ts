@@ -7,7 +7,7 @@ import { MessageService } from 'primeng/api';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { PessoaService } from './../pessoa.service';
-import { Pessoa } from './../../core/model';
+import { Pessoa, Contato } from './../../core/model';
 
 
 @Component({
@@ -19,6 +19,7 @@ export class PessoaCadastroComponent implements OnInit {
 
   pessoa = new Pessoa();
   exibindoFormularioContato = false;
+  contato: Contato;
 
   constructor(
     private pessoaService: PessoaService,
@@ -38,12 +39,13 @@ export class PessoaCadastroComponent implements OnInit {
         this.router.navigate(['/pagina-nao-encontrada']);
         return;
       }
-      this.carregarPessoa(codigoPessoa)
+      this.carregarPessoa(codigoPessoa);
     }
   }
 
   prepararNovoContato() {
     this.exibindoFormularioContato = true;
+    this.contato = new Contato();
   }
 
   get editando () {
@@ -65,6 +67,12 @@ export class PessoaCadastroComponent implements OnInit {
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
+
+
+
+
+
+
   adicionarPessoa(form: NgForm) {
     this.pessoaService.adicionar(this.pessoa)
       .then(() => {
