@@ -8,6 +8,7 @@ import { MessageService } from 'primeng/api';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { PessoaService } from './../pessoa.service';
 import { Pessoa, Contato } from './../../core/model';
+import { isWhileStatement } from 'typescript';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class PessoaCadastroComponent implements OnInit {
   pessoa = new Pessoa();
   exibindoFormularioContato = false;
   contato: Contato;
+  contatoIndex: number;
 
   constructor(
     private pessoaService: PessoaService,
@@ -46,10 +48,19 @@ export class PessoaCadastroComponent implements OnInit {
   prepararNovoContato() {
     this.exibindoFormularioContato = true;
     this.contato = new Contato();
+    this.contatoIndex = this.pessoa.contatos.length;
+  }
+
+
+  prepararEdicaoConato(contato: Contato, index: number) {
+    this.contato = this.clonarContato(contato);
+
+    this.exibindoFormularioContato = true;
+    this.contatoIndex = index;
   }
 
   confirmarContato(frm: FormControl) {
-    this.pessoa.contatos.push(this.clonarContato(this.contato));
+    this.pessoa.contatos[this.contatoIndex] = this.clonarContato(this.contato);
 
     this.exibindoFormularioContato = false;
 
