@@ -69,6 +69,10 @@
        <app-message [control]="estado.control" error="required" text="Informe um Estado"></app-message>
       </div>
       <div class="col-12 padding-top">
+        <button pButton label="{{ editando? 'Editar Contato' : 'Novo Contato ' }}" icon="pi pi-plus" type="button"
+          class="p-button-secondary" (click)="prepararNovoContato()"></button>
+      </div>
+      <div class="col-12 padding-top">
         <p-panel header="Contatos">
           <div class="grid">
             <div class="col-12">
@@ -125,3 +129,7 @@
     </div>
   </form>
 </div>
+
+<p-dialog header="{{ editando? 'Editar Contato' : 'Novo Contato ' }}" [(visible)]="exibindoFormularioContato" modal="modal">
+
+</p-dialog>
