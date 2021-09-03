@@ -64,6 +64,30 @@ export class LancamentoCadastroComponent implements OnInit {
     }
   }
 
+  aoTerminarUploadAnexo(event) {
+
+    const anexo = event.originalEvent.body;
+
+    this.formulario.patchValue({
+      anexo: anexo.nome,
+      urlAnexo: anexo.url
+    });
+  }
+
+  get nomeAnexo() {
+    const nome = this.formulario.get('anexo').value;
+
+    if (nome) {
+      return nome.substring(nome.indexOf('_') + 1, nome.length);
+    }
+
+    return '';
+  }
+
+  get urlUploadAnexo(){
+    return this.lancamentoService.urlUploadAnexo();
+  }
+
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
       codigo: [],
@@ -80,7 +104,9 @@ export class LancamentoCadastroComponent implements OnInit {
         codigo: [ null, this.validarRequired ],
         nome: []
       }),
-      observacao: []
+      observacao: [],
+      anexo: [],
+      urlAnexo: []
     });
   }
 
@@ -88,9 +114,7 @@ export class LancamentoCadastroComponent implements OnInit {
     return Boolean(this.formulario.get('codigo').value);
   }
 
-  get urlUploadAnexo(){
-    return this.lancamentoService.urlUploadAnexo();
-  }
+
 
   carregarLancamento(codigo: number) {
     this.lancamentoService.buscarPorCodigo(codigo)
