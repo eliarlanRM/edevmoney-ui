@@ -18,11 +18,11 @@ export class DashboardComponent implements OnInit {
     tooltips: {
       callbacks: {
         label: (tooltipItem, data) => {
-          const dataset = data.datasets[tooltipItem.datasetIndex];
-          const valor = dataset.data[tooltipItem.index];
-          const label = dataset.label ? (dataset.label + ': ') : '';
+            const dataset = data.datasets[tooltipItem.datasetIndex];
+            const valor = dataset.data[tooltipItem.index];
+            const label = dataset.label ? `${dataset.label}: ` : `${data.labels[tooltipItem.index]}: `;
 
-          return label + this.decimalPipe.transform(valor, '1.2-2');
+            return label + this.decimalPipe.transform(valor, '1.2-2');
         }
       }
     }
