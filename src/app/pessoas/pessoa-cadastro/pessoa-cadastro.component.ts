@@ -8,7 +8,6 @@ import { MessageService } from 'primeng/api';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { PessoaService } from './../pessoa.service';
 import { Pessoa, Contato } from './../../core/model';
-import { isWhileStatement } from 'typescript';
 
 
 @Component({
@@ -52,7 +51,8 @@ export class PessoaCadastroComponent implements OnInit {
   }
 
 
-  prepararEdicaoConato(contato: Contato, index: number) {
+
+  prepararEdicaoContato(contato: Contato, index: number) {
     this.contato = this.clonarContato(contato);
 
     this.exibindoFormularioContato = true;
@@ -65,6 +65,10 @@ export class PessoaCadastroComponent implements OnInit {
     this.exibindoFormularioContato = false;
 
     frm.reset();
+  }
+
+  removerContato(index: number){
+    this.pessoa.contatos.splice(index, 1);
   }
 
   clonarContato(contato: Contato): Contato {
@@ -114,7 +118,7 @@ export class PessoaCadastroComponent implements OnInit {
 
         this.atualizarTituloEdicao();
         this.pessoa = lancamento;
-        this.messageService.add({ severity: 'success', detail: 'Lançamento atualizado com sucesso!' });
+        this.messageService.add({ severity: 'success', detail: 'Pessoa atualizada com sucesso!' });
 
 
       })
