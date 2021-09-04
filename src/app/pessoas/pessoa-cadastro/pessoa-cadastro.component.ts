@@ -50,11 +50,18 @@ export class PessoaCadastroComponent implements OnInit {
   }
 
   carregarCidades() {
-    this.pessoaService.pesquisarCidades(this.estadoSelecionado).then(lista => {
-      this.cidades = lista.map(c => ({ label: c.nome, value: c.codigo }));
-    })
-    .catch(erro => this.errorHandler.handle(erro));
+    this.pessoaService.pesquisarCidades(this.estadoSelecionado)
+      .then(cidades => {
+          this.cidades = cidades.map(c => ({
+              label: c.nome,
+              value: c.codigo
+          }));
+          if (this.estadoSelecionado !== this.pessoa.endereco.cidade.estado.codigo)
+              this.pessoa.endereco.cidade.codigo = null;
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
+
 
   get editando() {
     return Boolean(this.pessoa.codigo)
