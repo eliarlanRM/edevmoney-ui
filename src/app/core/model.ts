@@ -1,5 +1,3 @@
-import * as moment from 'moment';
-
 export class Estado {
   codigo: number;
   nome: string;
@@ -20,29 +18,29 @@ export class Endereco {
   cidade = new Cidade();
 }
 
+export class Contato {
+  codigo: number;
+  nome: string;
+  email: string;
+  telefone: string;
+
+  constructor(codigo?: number,
+    nome?: string,
+    email?: string,
+    telefone?: string) {
+      this.codigo = codigo;
+      this.nome = nome;
+      this.email = email;
+      this.telefone = telefone;
+  }
+}
+
 export class Pessoa {
   codigo: number;
   nome: string;
   endereco = new Endereco();
   ativo = true;
   contatos = new Array<Contato>();
-}
-
-export class Contato {
-  codigo: number;
-  nome: string;
-  email: string;
-  telefone: string;
-  constructor (
-    codigo?: number,
-    nome?:string,
-    email?: string,
-    telefone?: string) {
-    this.codigo = codigo;
-    this.nome = nome;
-    this.email = email;
-    this.telefone = telefone;
-  }
 }
 
 export class Categoria {
@@ -59,6 +57,6 @@ export class Lancamento {
   observacao: string;
   pessoa = new Pessoa();
   categoria = new Categoria();
-  anexo: String;
-  urlAnexo: String;
+  anexo: string;
+  urlAnexo: string;
 }

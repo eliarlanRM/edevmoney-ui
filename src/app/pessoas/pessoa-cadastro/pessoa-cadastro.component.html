@@ -53,20 +53,20 @@
 
       </div>
       <div class="col-12 md:col-6 p-fluid">
+        <label class="padding">Estado</label>
+
+        <p-dropdown placeholder="Selecione..."
+          [filter]="true"  [options]="estados"></p-dropdown>
+
+       <!--<app-message [control]="estado.control" error="required" text="Informe um Estado"></app-message>-->
+      </div>
+      <div class="col-12 md:col-6 p-fluid">
         <label class="padding">Cidade</label>
         <input pInputText type="text" name="cidade"
           [(ngModel)]="pessoa.endereco.cidade"
           #cidade="ngModel" required>
 
         <app-message [control]="cidade.control" error="required" text="Informe uma Cidade"></app-message>
-      </div>
-      <div class="col-12 md:col-6 p-fluid">
-        <label class="padding">Estado</label>
-        <input pInputText type="text" name="estado"
-          [(ngModel)]="pessoa.endereco.estado"
-          #estado="ngModel" required>
-
-       <app-message [control]="estado.control" error="required" text="Informe um Estado"></app-message>
       </div>
       <div class="col-12 padding-top">
         <p-panel header="Contatos">
@@ -75,7 +75,7 @@
       </div>
       <div class="col-12">
         <button pButton type="submit" label="Salvar" [disabled]="!pessoaForm.valid" class="padding"></button>
-        <button pButton type="button" label="Novo" (click)="novo(pessoaForm)" class="p-button-info padding"></button>
+        <button pButton type="button" label="Novo" (click)="nova(pessoaForm)" class="p-button-info padding"></button>
         <a routerLink="/pessoas" class="p-fluid right">Voltar para a pesquisa</a>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { environment } from './../../environments/environment';
 import { Pessoa, Estado, Cidade } from './../core/model';
@@ -21,7 +21,6 @@ export class PessoaService {
     this.pessoasUrl = `${environment.apiUrl}/pessoas`;
     this.estadosUrl = `${environment.apiUrl}/estados`;
     this.cidadesUrl = `${environment.apiUrl}/cidades`;
-
   }
 
   pesquisar(filtro: PessoaFiltro): Promise<any> {
@@ -80,15 +79,15 @@ export class PessoaService {
       .toPromise();
   }
 
-  listarEstados(): Promise<Estado>{
-    return this.http.get(this.estadosUrl)
-      .toPromise()
-      .then(response => response['content']);
+  listarEstados(): Promise<Estado[]> {
+    return this.http.get<Estado[]>(this.estadosUrl).toPromise();
   }
+
   pesquisarCidades(estado): Promise<Cidade[]> {
     const params = new HttpParams()
       .set('estado', estado);
 
     return this.http.get<Cidade[]>(this.cidadesUrl, { params }).toPromise();
   }
+
 }
