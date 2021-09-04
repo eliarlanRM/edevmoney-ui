@@ -1,13 +1,23 @@
 import * as moment from 'moment';
 
+export class Estado {
+  codigo: number;
+  nome: string;
+}
+
+export class Cidade {
+  codigo: number;
+  nome: string;
+  estado = new Estado();
+}
+
 export class Endereco {
   logradouro: string;
   numero: string;
   complemento: string;
   bairro: string;
   cep: string;
-  cidade: string;
-  estado: string;
+  cidade = new Cidade();
 }
 
 export class Pessoa {
@@ -17,12 +27,12 @@ export class Pessoa {
   ativo = true;
   contatos = new Array<Contato>();
 }
+
 export class Contato {
   codigo: number;
   nome: string;
   email: string;
   telefone: string;
-
   constructor (
     codigo?: number,
     nome?:string,
