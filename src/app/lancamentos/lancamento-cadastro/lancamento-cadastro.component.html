@@ -59,7 +59,7 @@
       </div>
       <div class="lg:col-12 md:col-6 sm:col-3 p-fluid"
       *ngIf="!formulario.get('anexo').value">
-          <p-fileUpload name="anexo" mode="basic" auto="true" maxFileSize="100000000"
+          <p-fileUpload name="anexo" mode="basic" auto="true" maxFileSize="100000000" chooseIcon="pi pi-upload"
             chooseLabel="Anexar" accept="image/*,application/*"
             [url]="urlUploadAnexo"
             (onBeforeUpload)="antesUploadAnexo()"
@@ -73,11 +73,13 @@
       </div>
       <div class="lg:col-12 md:col-6 sm:col-3 p-fluid" dir="rtl"
       *ngIf="formulario.get('anexo').value">
+        <button pButton icon="pi pi-times" pTooltip="Excluir" class="p-button-danger"
+        tooltipPosition="top" (click)="removerAnexo()"></button>
         <a target="_blank" pTooltip="Baixar anexo" tooltipPosition="top"
         [href]="formulario.get('urlAnexo').value">{{ nomeAnexo }}</a>
       </div>
       <div class=" col-12 sm:col-10">
-        <button pButton type="submit" label="Salvar" class="p-button-primary padding" [disabled]="formulario.invalid"></button>
+        <button pButton type="submit" label="Salvar" class="p-button-primary padding" [disabled]="formulario.invalid ||uploadEmAndamento"></button>
         <button pButton type="button" label="Novo" class="p-button-info"
           (click)="novo()"></button>
       </div>
