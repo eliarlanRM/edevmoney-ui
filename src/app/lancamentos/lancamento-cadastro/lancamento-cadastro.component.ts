@@ -26,6 +26,7 @@ export class LancamentoCadastroComponent implements OnInit {
   categorias = [];
   pessoas = [];
   formulario: FormGroup;
+  uploadEmAndamento = false;
 
   constructor(
     private categoriaService: CategoriaService,
@@ -54,14 +55,8 @@ export class LancamentoCadastroComponent implements OnInit {
     this.carregarPessoas();
   }
 
-  validarRequired(input: FormControl) {
-    return (input.value ? null : {obrigatorio: true});
-  }
-
-  validarMinLength(valor: number) {
-    return (input: FormControl) => {
-      return (!input.value || input.value.length >= valor) ? null : {tamanhoMinimo: { tamanho: valor} };
-    }
+  antesUploadAnexo() {
+    this.uploadEmAndamento = true;
   }
 
   aoTerminarUploadAnexo(event) {
@@ -72,9 +67,12 @@ export class LancamentoCadastroComponent implements OnInit {
       anexo: anexo.nome,
       urlAnexo: anexo.url
     });
+
+    this.uploadEmAndamento = false;
   }
   erroUpload(event) {
     this.messageService.add({ severity: 'error', detail: 'Erro ao tentar enviar anexo!' });
+    this.uploadEmAndamento = false;
   }
 
   get nomeAnexo() {
@@ -113,11 +111,19 @@ export class LancamentoCadastroComponent implements OnInit {
     });
   }
 
+  validarRequired(input: FormControl) {
+    return (input.value ? null : {obrigatorio: true});
+  }
+
+  validarMinLength(valor: number) {
+    return (input: FormControl) => {
+      return (!input.value || input.value.length >= valor) ? null : {tamanhoMinimo: { tamanho: valor} };
+    }
+  }
+
   get editando() {
     return Boolean(this.formulario.get('codigo').value);
   }
-
-
 
   carregarLancamento(codigo: number) {
     this.lancamentoService.buscarPorCodigo(codigo)
