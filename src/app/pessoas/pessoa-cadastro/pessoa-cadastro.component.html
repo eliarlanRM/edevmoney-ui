@@ -1,6 +1,6 @@
 <div class="container">
   <form autocomplete="off"  #pessoaForm="ngForm" (ngSubmit)="salvar(pessoaForm)">
-    <div class="formgrid grid">
+    <div class="grid">
       <div class="col-12">
         <h1>{{ editando? 'Editar Pessoa' : 'Nova Pessoa ' }}</h1>
       </div>
@@ -82,10 +82,13 @@
           <app-pessoa-cadastro-contato [contatos]="pessoa.contatos"></app-pessoa-cadastro-contato>
         </p-panel>
       </div>
-      <div class="col-12">
+      <div class=" col-12 sm:col-10">
         <button pButton type="submit" label="Salvar" [disabled]="!pessoaForm.valid" class="padding"></button>
         <button pButton type="button" label="Novo" (click)="nova(pessoaForm)" class="p-button-info padding"></button>
-        <a routerLink="/pessoas" class="p-fluid right">Voltar para a pesquisa</a>
+
+      </div>
+      <div class="col-12 sm:col-2">
+        <a routerLink="/pessoas" class="p-fluid right-0">Voltar para a pesquisa</a>
       </div>
     </div>
   </form>
