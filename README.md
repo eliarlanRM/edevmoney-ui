@@ -1,12 +1,12 @@
 # EdevmoneyUi
 Front End da API REST edevmoney-api
 
-Inicie o Back-end da aplicação: https://edevmoney-api.herokuapp.com/
+Inicie o Back-end da aplicação: https://edevmoney-api.herokuapp.com/ <br>
 
 
-Deploy: https://edevmoney-ui.herokuapp.com/
-usuário: admin@algamoney.com
-Senha:  admin
+Deploy: https://edevmoney-ui.herokuapp.com/ <br>
+usuário: admin@algamoney.com <br>
+Senha:  admin <br>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
 
