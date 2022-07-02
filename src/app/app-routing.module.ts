@@ -1,9 +1,14 @@
-import { LancamentosPesquisaComponent } from './lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: LancamentosPesquisaComponent },
+  {
+    path: 'lancamentos',
+    loadChildren: () =>
+      import('./lancamentos/lancamentos.module').then(
+        (m) => m.LancamentosModule
+      ),
+  },
 ];
 
 @NgModule({

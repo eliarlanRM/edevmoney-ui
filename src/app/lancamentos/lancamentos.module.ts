@@ -7,6 +7,7 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
+import { LancamentosRoutingModule } from './lancamentos-routing.module';
 
 @NgModule({
   declarations: [LancamentosPesquisaComponent],
@@ -17,6 +18,8 @@ import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos
     CalendarModule,
     TableModule,
     TooltipModule,
+
+    LancamentosRoutingModule
   ],
 })
 export class LancamentosModule {}
