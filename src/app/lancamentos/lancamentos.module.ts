@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LancamentosPesquisaComponent
+  ],
   imports: [
     CommonModule
   ]
