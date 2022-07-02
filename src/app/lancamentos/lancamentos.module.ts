@@ -8,9 +8,10 @@ import { TooltipModule } from 'primeng/tooltip';
 
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { LancamentosRoutingModule } from './lancamentos-routing.module';
+import { LancamentosCadastroComponent } from './lancamentos-cadastro/lancamentos-cadastro.component';
 
 @NgModule({
-  declarations: [LancamentosPesquisaComponent],
+  declarations: [LancamentosPesquisaComponent, LancamentosCadastroComponent],
   imports: [
     CommonModule,
     ButtonModule,
