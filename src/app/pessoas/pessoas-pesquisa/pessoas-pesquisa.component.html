@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="container-body">
+    <div class="grid">
+      <div class="col-12">
+        <h1>Pessoas</h1>
+      </div>
+
+      <div class="col-12 p-fluid">
+        <label>Nome</label>
+        <input pInputText type="text">
+      </div>
+
+      <div class="col-12">
+        <button pButton type="submit" icon="pi pi-search" iconPos="left" label="Pesquisar"></button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-12">
+        <p-table [value]="pessoas" [responsive]="true"
+          [paginator]="true" [rows]="5">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Nome</th>
+              <th>Cidade</th>
+              <th>Estado</th>
+              <th>Status</th>
+              <th class="col-acoes-header"></th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-pessoa>
+            <tr>
+              <td>
+                <span class="p-column-title">Nome</span>
+                {{ pessoa.nome }}
+              </td>
+              <td>
+                <span class="p-column-title">Cidade</span>
+                {{ pessoa.cidade }}
+              </td>
+              <td>
+                <span class="p-column-title">Estado</span>
+                {{ pessoa.estado }}
+              </td>
+              <td>
+                <span class="p-column-title">Status</span>
+                <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'"
+                    tooltipPosition="top">
+                  {{ pessoa.ativo ? 'Ativo' : 'Inativo' }}
+                </a>
+              </td>
+              <td class="col-acoes">
+                <span class="p-column-title"></span>
+                <span>
+                  <button pButton icon="pi pi-pencil" pTooltip="Editar" class="p-button-info" tooltipPosition="top"></button>
+                <button pButton icon="pi pi-trash" pTooltip="Excluir" class="p-button-danger" tooltipPosition="top"></button></span>
+              </td>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="5">
+                Nenhuma pessoa encontrada
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <div class="col-12">
+        <button icon="pi pi-user-plus" iconPos="left" pButton label="Nova Pessoa"></button>
+      </div>
+    </div>
+  </div>
+</div>

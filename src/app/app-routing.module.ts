@@ -1,3 +1,4 @@
+import { PessoasPesquisaComponent } from './pessoas/pessoas-pesquisa/pessoas-pesquisa.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -9,6 +10,7 @@ const routes: Routes = [
         (m) => m.LancamentosModule
       ),
   },
+  { path: 'pessoas', component: PessoasPesquisaComponent },
 ];
 
 @NgModule({
