@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -65,7 +66,14 @@ export class LancamentosPesquisaComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
+
+  onAdd(){
+    this.router.navigate(['novo'], {relativeTo: this.route});
+  }
 }
