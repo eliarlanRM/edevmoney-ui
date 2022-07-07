@@ -1,1 +1,89 @@
-<p>lancamentos-cadastro works!</p>
+<div class="container">
+  <div class="container-body">
+    <form #lancamentoForm="ngForm" autocomplete="off">
+      <div class="grid">
+        <div class="col-12">
+          <h1>Novo Lançamento</h1>
+        </div>
+        <div class="col-12">
+          <p-selectButton [options]="tipos" #tipo name="tipo"></p-selectButton>
+        </div>
+        <div class="col-6 md:col-3 p-fluid">
+          <label>Vencimento</label>
+          <p-calendar
+            name="vencimento"
+            dateFormat="dd/mm/yy"
+            [touchUI]="true"
+            [showIcon]="true"
+            name="dataVencimento"
+            [required]="true"
+          ></p-calendar>
+        </div>
+        <div class="col-6 md:col-3 p-fluid">
+          <label>{{
+            tipo.value === "RECEITA" ? "Recebimento" : "Pagamento"
+          }}</label>
+          <p-calendar
+            dateFormat="dd/mm/yy"
+            name="dataPagamento"
+            [touchUI]="true"
+            [showIcon]="true"
+          ></p-calendar>
+        </div>
+        <div class="col-12 md:col-9 p-fluid">
+          <label>Descrição</label>
+          <input
+            pInputText
+            type="text"
+            name="descricao"
+            required
+            minlength="5"
+          />
+        </div>
+        <div class="col-12 md:col-3 p-fluid">
+          <label>Valor</label>
+          <p-inputNumber
+            mode="currency"
+            currency="BRL"
+            placeholder="R$ 0,00"
+            name="valor"
+            [minFractionDigits]="2"
+            [maxFractionDigits]="2"
+            [showClear]="true"
+            [required]="true"
+          ></p-inputNumber>
+        </div>
+        <div class="col-12 md:col-6 p-fluid">
+          <label>Categoria</label>
+          <p-dropdown
+            [options]="categorias"
+            placeholder="Selecione"
+            [filter]="true"
+            name="categoria"
+            #categoria
+          ></p-dropdown>
+        </div>
+        <div class="col-12 md:col-6 p-fluid">
+          <label>Pessoa</label>
+          <p-dropdown
+            [options]="pessoas"
+            placeholder="Selecione"
+            name="pessoa"
+            [filter]="true"
+            #pessoa
+          ></p-dropdown>
+        </div>
+        <div class="col-12 p-fluid">
+          <label>Observação</label>
+          <textarea pInputTextarea rows="3"
+            name="observacao"></textarea>
+        </div>
+        <div class="col-12">
+          <button pButton type="submit" label="Salvar" [disabled]="lancamentoForm.invalid"></button>
+          <button pButton type="button" label="Novo" class="p-button-info"></button>
+          <a [routerLink]="['/lancamentos']">Voltar para a pesquisa</a>
+      </div>
+      </div>
+    </form>
+  </div>
+</div>
