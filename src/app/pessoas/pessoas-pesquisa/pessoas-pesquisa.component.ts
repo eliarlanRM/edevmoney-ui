@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -29,7 +30,14 @@ export class PessoasPesquisaComponent implements OnInit {
     },
     { nome: 'Paula Maria', cidade: 'Uberlândia', estado: 'MG', ativo: true },
   ];
-  constructor() {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {}
+
+  novaPessoa() {
+    this.router.navigate(['nova'], { relativeTo: this.route });
+  }
 }

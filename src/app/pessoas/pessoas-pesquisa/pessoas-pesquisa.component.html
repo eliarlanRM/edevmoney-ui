@@ -18,7 +18,8 @@
     <div class="grid">
       <div class="col-12">
         <p-table [value]="pessoas" [responsive]="true"
-          [paginator]="true" [rows]="5">
+          [paginator]="true" [rows]="5"
+          styleClass="p-datatable-gridlines">
           <ng-template pTemplate="header">
             <tr>
               <th>Nome</th>
@@ -69,7 +70,7 @@
         </p-table>
       </div>
       <div class="col-12">
-        <button icon="pi pi-user-plus" iconPos="left" pButton label="Nova Pessoa"></button>
+        <button icon="pi pi-user-plus" iconPos="left" pButton (click)="novaPessoa()" label="Nova Pessoa"></button>
       </div>
     </div>
   </div>
