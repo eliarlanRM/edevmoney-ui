@@ -6,11 +6,12 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
+import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
 
 
 
 @NgModule({
-  declarations: [PessoasPesquisaComponent],
+  declarations: [PessoasPesquisaComponent, PessoasCadastroComponent],
   imports: [
     CommonModule,
     TableModule,
