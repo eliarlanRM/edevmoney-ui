@@ -73,7 +73,7 @@ export class LancamentosPesquisaComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onAdd(){
+  novoLancamento(){
     this.router.navigate(['novo'], {relativeTo: this.route});
   }
 }
