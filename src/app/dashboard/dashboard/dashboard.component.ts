@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 
 import { DashboardService } from './../dashboard.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,11 +19,11 @@ export class DashboardComponent implements OnInit {
     tooltips: {
       callbacks: {
         label: (tooltipItem, data) => {
-            const dataset = data.datasets[tooltipItem.datasetIndex];
-            const valor = dataset.data[tooltipItem.index];
-            const label = dataset.label ? `${dataset.label}: ` : `${data.labels[tooltipItem.index]}: `;
+          const dataset = data.datasets[tooltipItem.datasetIndex];
+          const valor = dataset.data[tooltipItem.index];
+          const label = dataset.label ? `${dataset.label}: ` : `${data.labels[tooltipItem.index]}: `;
 
-            return label + this.decimalPipe.transform(valor, '1.2-2');
+          return label + this.decimalPipe.transform(valor, '1.2-2');
         }
       }
     }
@@ -30,9 +31,12 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private dashboardService: DashboardService,
-    private decimalPipe: DecimalPipe) { }
+    private decimalPipe: DecimalPipe,
+    private title: Title
+  ) { }
 
   ngOnInit() {
+    this.title.setTitle('Dashboard');
     this.configurarGraficoPizza();
     this.configurarGraficoLinha();
   }
@@ -46,7 +50,7 @@ export class DashboardComponent implements OnInit {
             {
               data: dados.map(dado => dado.total),
               backgroundColor: ['#FF9900', '#109618', '#990099', '#3B3EAC', '#0099C6',
-                                  '#DD4477', '#3366CC', '#DC3912']
+                '#DD4477', '#3366CC', '#DC3912']
             }
           ]
         };
@@ -85,7 +89,7 @@ export class DashboardComponent implements OnInit {
     for (const dia of diasDoMes) {
       let total = 0;
 
-      for (const dado of dados){
+      for (const dado of dados) {
         if (dado.dia.getDate() === dia) {
           total = dado.total;
 
